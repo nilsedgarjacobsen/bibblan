@@ -16,4 +16,12 @@ public class LoanService {
     public List<Loan> getAllLoans(){
         return loanRepository.findAll();
     }
+
+    public void loan(Loan loan){
+        loanRepository.save(loan);
+    }
+
+    public List<Loan> getLoansByUserId(Integer id){
+        return loanRepository.getLoansByUserUserId(id);
+    }
 }

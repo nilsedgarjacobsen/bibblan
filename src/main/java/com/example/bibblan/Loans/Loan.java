@@ -15,13 +15,14 @@ public class Loan {
     @Column(name = "loan_id")
     private Integer loanId;
 
+    // Explicit definiera mappning för user_id kolumnen
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @JsonIgnore
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    // Explicit definiera mappning för book_id kolumnen
     @ManyToOne
-    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
     @Column(name = "borrowed_date")
