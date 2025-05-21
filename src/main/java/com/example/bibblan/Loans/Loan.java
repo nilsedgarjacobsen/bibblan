@@ -2,6 +2,7 @@ package com.example.bibblan.Loans;
 
 import com.example.bibblan.Books.Book;
 import com.example.bibblan.Users.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ public class Loan {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JsonIgnore
     private User user;
 
     @ManyToOne
