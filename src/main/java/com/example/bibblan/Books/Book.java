@@ -2,6 +2,7 @@ package com.example.bibblan.Books;
 
 import com.example.bibblan.Authors.Author;
 import com.example.bibblan.Loans.Loan;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Set;
 
@@ -28,9 +29,11 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "author_id")
+    @JsonIgnore
     private Author author;
 
     @OneToMany(mappedBy = "book")
+    @JsonIgnore
     private Set<Loan> loans;
 
     // Getters and Setters
