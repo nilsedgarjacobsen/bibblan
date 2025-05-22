@@ -1,5 +1,7 @@
 package com.example.bibblan.Loans;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +22,13 @@ public class LoanController {
     }
 
     @PostMapping
-    public void loan(@RequestBody Loan loan){
-        loanService.loan(loan);
+    public ResponseEntity<?> loan(@RequestBody LoanDTO loanDTO) {
+        try {
+            loanService.loan(loanDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Lån skapat framgångsrikt");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Fel: " + e.getMessage());
+        }
     }
 
     @GetMapping("/user/{id}")
